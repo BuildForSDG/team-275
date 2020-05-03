@@ -1,0 +1,15 @@
+const express = require("express")
+const bodyParser = require("body-parser")
+const indexRouter = require("./routes/index")
+
+const app = express()
+app.use(express.json())
+
+/** --- middleware ---- */
+app.use(bodyParser.json())
+/** --- middleware ---- */
+app.use('/api', indexRouter)
+
+app.listen("3000", () => {
+  console.log("Server running at port :3003")
+});
