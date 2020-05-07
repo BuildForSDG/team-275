@@ -2,7 +2,7 @@ import express from "express";
 import {AuthController} from "../controllers/auth.controller.js";
 
 const router = express.Router();
-router.post("/register", async (req, res, next) => {
+router.post("/register", async (req, res) => {
     try {
         const auth = new AuthController();
         const user = {
@@ -10,8 +10,8 @@ router.post("/register", async (req, res, next) => {
             email: req.body.email,
             password: req.body.password
         };
-        const _newUser = await auth.registerUser(user);
-        res.send(_newUser);
+        const doc = await auth.registerUser(user);
+        res.send(doc);
     } catch (e) {
         res.status(400).send({error: e.message});
     }
