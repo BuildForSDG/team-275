@@ -2,9 +2,6 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 const eduProviderSchema = new Schema({
-    id: {
-        type: Number,
-        required: true
-    }
+    _userId: {type: Schema.Types.ObjectId, ref: "User"}
 });
-module.exports = mongoose.model("education_Provider", eduProviderSchema);
+module.exports = mongoose.model("Education_Provider", eduProviderSchema);
