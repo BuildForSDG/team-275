@@ -3,6 +3,7 @@ import {json} from "body-parser";
 import {indexRouter} from "./routes";
 import {userRouter} from "./routes/user.route";
 
+
 const app = express();
 app.use(express.json());
 
