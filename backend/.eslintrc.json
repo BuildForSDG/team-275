@@ -6,7 +6,7 @@
         "jest": true
     },
     "extends": [
-        "airbnb-base"
+        "eslint:recommended"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -24,11 +24,6 @@
         "semi": [
             "warn",
             "always"
-        ],
-        "no-constant-condition": "error",
-        "block-scoped-var": "error",
-        "consistent-return": "error",
-        "eqeqeq": "error",
-        "require-await": "error"
+        ]
     }
 }
