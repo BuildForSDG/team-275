@@ -12,25 +12,19 @@ export class AuthController {
         user.password = await bcrypt.hash(user.password, 10);
         return user.save();
     }
-    async postLogin(res, req, userModel) {
+    async postLogin(userModel) {
             let user = await User.findOne({ email: userModel.email });
+            let result = [];
             if (!user) {
-                return res
-                  .status(400)
-                  .json({ errors: [{ msg: 'Invalid Credentials' }] });
+               throw new Error("Invalid Credentials man");
               }
-              const isMatch = await bcrypt.compare(user.password, userModel.password);
+              const isMatch = await bcrypt.compare(userModel.password, user.password);
               if (!isMatch) {
-                return res
-                  .status(400)
-                  .json({ errors: [{ msg: 'Invalid Credentials' }] });
+                throw new Error("Invalid Credentials dude");
               }
-              jwt.sign({email: user.email},
+              const token = jwt.sign({email: user.email},
                 "jwtSecret",
-                { expiresIn: 360000 },
-                (err, token) => {
-                  if (err) throw err;
-                  res.json({ token });
-                }
-              );
-          }}
+                { expiresIn: 360000 });
+              return {id: user.id, email: user.email, token: token};
+          }
+        }

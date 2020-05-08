@@ -23,8 +23,8 @@ router.post("/login", async (req, res) => {
         email: req.body.email,
         password: req.body.password
     };
-    const doc = await auth.postLogin(res, user);
-    return res.send(doc);
+    const doc = await auth.postLogin(user);
+    return res.status(200).send(doc);
     } catch (e) {
         res.status(500).send({error: e.message });
     }
