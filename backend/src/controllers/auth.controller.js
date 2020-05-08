@@ -12,18 +12,25 @@ export class AuthController {
         user.password = await bcrypt.hash(user.password, 10);
         return user.save();
     }
-    postLogin(res, req) {
-        User.findOne({ email: req.body.email })
-            .then((doc) => {
-                if (doc) {
-                    if (doc.isValid(req.body.email)) {
-                        let token = jwt.sign({ email: doc.email }, "secret", { expiresIn: "3h" });
-                        return res.status(200).json(token);
-                    }
-                } else {
-                    return res.status(501).json({ message: "User does not exist!" });
+    async postLogin(res, req, userModel) {
+            let user = await User.findOne({ email: userModel.email });
+            if (!user) {
+                return res
+                  .status(400)
+                  .json({ errors: [{ msg: 'Invalid Credentials' }] });
+              }
+              const isMatch = await bcrypt.compare(user.password, userModel.password);
+              if (!isMatch) {
+                return res
+                  .status(400)
+                  .json({ errors: [{ msg: 'Invalid Credentials' }] });
+              }
+              jwt.sign({email: user.email},
+                "jwtSecret",
+                { expiresIn: 360000 },
+                (err, token) => {
+                  if (err) throw err;
+                  res.json({ token });
                 }
-            })
-            .catch(err => { throw new Error(err); });
-    }
-}
+              );
+          }}

@@ -16,11 +16,17 @@ router.post("/register", async (req, res) => {
         res.status(400).send({ error: e.message });
     }
 });
-// @route    POST api/auth
-// @desc     Authenticate user & get token
-// @access   Public
-router.post("/login", (req, res) => { 
+router.post("/login", async (req, res) => { 
+    try {
     const auth = new AuthController();
-    return auth.postLogin(req, res);
+    const user = {
+        email: req.body.email,
+        password: req.body.password
+    };
+    const doc = await auth.postLogin(res, user);
+    return res.send(doc);
+    } catch (e) {
+        res.status(500).send({error: e.message });
+    }
 });
 export const userRouter = router;
