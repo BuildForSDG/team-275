@@ -6,6 +6,8 @@
     "serve": "node dist/app.js",
     "start": "nodemon --exec babel-node src/app.js",
     "build": "babel src/ --out-dir dist",
+    "format": "prettier --write \"src/**/*.js\" \"lib/**/*.js\"",
+    "format:check": "prettier --check \"src/**/*.js\" \"lib/**/*.js\"",
     "clean": "rimraf dist",
     "lint": "npm run clean && eslint . src/",
     "test": "echo No test specified"
@@ -18,7 +20,8 @@
     "express": "~4.16.1",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.5.7",
-    "mongoose": "^5.9.12"
+    "mongoose": "^5.9.12",
+    "prettier": "^2.0.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",

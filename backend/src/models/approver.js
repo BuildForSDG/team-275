@@ -1,10 +1,10 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 const approverSchema = new Schema({
-    id: {
-        type: Number,
-        required: true
-    }
+  id: {
+    type: Number,
+    required: true
+  }
 });
-module.exports = mongoose.model("approver", approverSchema);
+module.exports = mongoose.model('approver', approverSchema);

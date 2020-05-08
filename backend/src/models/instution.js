@@ -1,10 +1,10 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 const institutionSchema = new Schema({
-    id: {
-        type: Number,
-        required: true
-    }
+  id: {
+    type: Number,
+    required: true
+  }
 });
-module.exports = mongoose.model("institution", institutionSchema);
+module.exports = mongoose.model('institution', institutionSchema);
