@@ -1,11 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule, EmailValidator } from '@angular/forms';
-import { BrowserModule, By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import {
+  FormsModule,
+  ReactiveFormsModule,
+  EmailValidator,
+} from "@angular/forms";
+import { BrowserModule, By } from "@angular/platform-browser";
+import { DebugElement } from "@angular/core";
 
-import { RegisterComponent } from './register.component';
+import { RegisterComponent } from "./register.component";
 
-describe('RegisterComponent', () => {
+describe("RegisterComponent", () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
   let de: DebugElement;
@@ -13,22 +17,18 @@ describe('RegisterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RegisterComponent ],
-      imports: [
-        BrowserModule,
-        FormsModule,
-        ReactiveFormsModule
-      ]
-
+      declarations: [RegisterComponent],
+      imports: [BrowserModule, FormsModule, ReactiveFormsModule],
     })
-    .compileComponents().then(() => {
-      fixture = TestBed.createComponent(RegisterComponent);
+      .compileComponents()
+      .then(() => {
+        fixture = TestBed.createComponent(RegisterComponent);
 
-      component = fixture.componentInstance; // ContactComponent test instance
-      // query for the title <h1> by CSS element selector
-      de = fixture.debugElement.query(By.css('form'));
-      el = de.nativeElement;
-    });
+        component = fixture.componentInstance; // ContactComponent test instance
+        // query for the title <h1> by CSS element selector
+        de = fixture.debugElement.query(By.css("form"));
+        el = de.nativeElement;
+      });
   }));
 
   beforeEach(() => {
@@ -37,7 +37,7 @@ describe('RegisterComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
   it(`form should be invalid`, async(() => {
@@ -45,41 +45,42 @@ describe('RegisterComponent', () => {
   }));
 
   it(`email should be valid`, async(() => {
-    component.registrationForm.controls['email'].setValue('asd@asd.com');
-    expect(component.registrationForm.controls['email']).toBeTruthy();
+    component.registrationForm.controls["email"].setValue("asd@asd.com");
+    expect(component.registrationForm.controls["email"]).toBeTruthy();
   }));
 
-  it('email field should have errors when empty', async(() => {
+  it("email field should have errors when empty", async(() => {
     let errors = {};
-    let email = component.registrationForm.controls['email'];
+    let email = component.registrationForm.controls["email"];
     errors = email.errors || {};
-    expect(errors['required']).toBeTruthy(); (1)
+    expect(errors["required"]).toBeTruthy();
+    1;
   }));
 
-  it('email field should match pattern', async(() => {
-    let email = component.registrationForm.controls['email'];
-    email.setValue('someone@gmail.com');
+  it("email field should match pattern", async(() => {
+    let email = component.registrationForm.controls["email"];
+    email.setValue("someone@gmail.com");
     let errors = email.errors || {};
-    expect(errors['email']).toBeFalsy();
-  }))
+    expect(errors["email"]).toBeFalsy();
+  }));
 
   it(`password should be valid`, async(() => {
-    component.registrationForm.controls['password'].setValue('somePassword*1');
-    expect(component.registrationForm.controls['password']).toBeTruthy();
+    component.registrationForm.controls["password"].setValue("somePassword*1");
+    expect(component.registrationForm.controls["password"]).toBeTruthy();
   }));
 
-  it('password field should have errors when empty',async (() => {
+  it("password field should have errors when empty", async(() => {
     let errors = {};
-    let email = component.registrationForm.controls['email'];
+    let email = component.registrationForm.controls["email"];
     errors = email.errors || {};
-    expect(errors['required']).toBeTruthy(); (1)
+    expect(errors["required"]).toBeTruthy();
+    1;
   }));
 
-  it('password field should match pattern', async(() => {
-    let password = component.registrationForm.controls['password'];
-    password.setValue('SomePassword*1');
+  it("password field should match pattern", async(() => {
+    let password = component.registrationForm.controls["password"];
+    password.setValue("SomePassword*1");
     let errors = password.errors || {};
-    expect(errors['pattern']).toBeFalsy();
-  }))
-
+    expect(errors["pattern"]).toBeFalsy();
+  }));
 });
