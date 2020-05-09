@@ -55,6 +55,37 @@ paths:
                     type: string
         "400":
           $ref: "#/components/responses/GenericError"
+  /api/auth/reset-password:
+    post:
+      tags:
+        - Authentication
+      description: resets user password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                email:
+                  type: string
+                oldPassword:
+                  type: string
+                newPassword:
+                  type: string
+      responses:
+        "200":
+          description: password successfully reset/updated
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+        "400":
+          $ref: "#/components/responses/GenericError"
 components:
   schemas:
     User:
