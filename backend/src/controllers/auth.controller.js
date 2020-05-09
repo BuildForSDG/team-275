@@ -21,7 +21,7 @@ export class AuthController {
     if (!isMatch) {
       throw new Error('Invalid Credentials dude');
     }
-    const token = jwt.sign({ email: user.email }, 'jwtSecret', { expiresIn: 360000 });
-    return { id: user.id, email: user.email, token: token };
+    const token = jwt.sign({ id: user.id }, 'jwtSecret', { expiresIn: 360000 });
+    return { token: token };
   }
 }
