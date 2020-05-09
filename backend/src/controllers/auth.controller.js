@@ -28,13 +28,16 @@ export class AuthController {
   async resetPassword(userData) {
     let user = await User.findOne({ email: userData.email }).exec();
     if (!user) {
-      throw new Error('incorret email');
+      /** the idea is NOT to give people an idea of what went wrong
+       * otherwise they can guess an email
+       * */
+      throw new Error("Incorrect email or password");
     }
     const isMatch = await bcrypt.compare(userData.oldPassword, user.password);
     if (!isMatch) {
-      throw new Error('incorrect password');
+      throw new Error("Incorrect email or password");
     }
     user.password = await bcrypt.hash(userData.newPassword, 10);
-    user.save().catch(err => { throw new Error(err); });
+    return user.save();
   }
 }
