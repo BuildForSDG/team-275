@@ -24,4 +24,17 @@ export class AuthController {
     const token = jwt.sign({id: user.id}, "1913155164FC4B4DA16CCEA62C6C98A6", {expiresIn: "2Hrs"});
     return { token: token };
   }
+
+  async resetPassword(userData) {
+    let user = await User.findOne({ email: userData.email }).exec();
+    if (!user) {
+      throw new Error('incorret email');
+    }
+    const isMatch = await bcrypt.compare(userData.oldPassword, user.password);
+    if (!isMatch) {
+      throw new Error('incorrect password');
+    }
+    user.password = await bcrypt.hash(userData.newPassword, 10);
+    user.save().catch(err => { throw new Error(err); });
+  }
 }
