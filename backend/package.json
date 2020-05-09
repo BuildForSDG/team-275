@@ -6,8 +6,7 @@
     "serve": "node dist/app.js",
     "start": "nodemon --exec babel-node src/app.js",
     "build": "babel src/ --out-dir dist",
-    "format": "prettier --write \"src/**/*.js\" \"lib/**/*.js\"",
-    "format:check": "prettier --check \"src/**/*.js\" \"lib/**/*.js\"",
+    "format": "prettier --write \"src/**/*.js\"",
     "clean": "rimraf dist",
     "lint": "npm run clean && eslint . src/",
     "test": "echo No test specified"

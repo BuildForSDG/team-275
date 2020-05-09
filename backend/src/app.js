@@ -8,7 +8,6 @@ import {dbConnection} from "./util/database";
 
 const swaggerDoc = Yaml.load("src/openapi.yml");
 
-
 const app = express();
 app.use(express.json());
 
