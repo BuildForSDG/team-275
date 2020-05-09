@@ -71,8 +71,8 @@ describe("RegisterComponent", () => {
 
   it("password field should have errors when empty", async(() => {
     let errors = {};
-    let email = component.registrationForm.controls["email"];
-    errors = email.errors || {};
+    let password = component.registrationForm.controls["password"];
+    errors = password.errors || {};
     expect(errors["required"]).toBeTruthy();
     1;
   }));
