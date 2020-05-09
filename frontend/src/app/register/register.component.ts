@@ -9,6 +9,8 @@ import { PasswordValidator } from "../password.validator";
 })
 export class RegisterComponent implements OnInit {
   options = ["Education Provider", "Institution"];
+
+  //getters to prevent cluttering template with repetitive code
   get email() {
     return this.registrationForm.get("email");
   }
