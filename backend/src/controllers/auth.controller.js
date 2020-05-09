@@ -15,13 +15,13 @@ export class AuthController {
   async postLogin(userModel) {
     let user = await User.findOne({ email: userModel.email });
     if (!user) {
-      throw new Error('Invalid Credentials man');
+      throw new Error("Incorrect email or password");
     }
     const isMatch = await bcrypt.compare(userModel.password, user.password);
     if (!isMatch) {
-      throw new Error('Invalid Credentials dude');
+      throw new Error("Incorrect email or password");
     }
-    const token = jwt.sign({id: user.id}, "jwtSecret", {expiresIn: "2Hrs"});
+    const token = jwt.sign({id: user.id}, "1913155164FC4B4DA16CCEA62C6C98A6", {expiresIn: "2Hrs"});
     return { token: token };
   }
 }
