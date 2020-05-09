@@ -1,0 +1,86 @@
+openapi: 3.0.0
+info:
+  title: Team 275 API
+  version: 0.0.1
+  description: The API docs for Team 257
+paths:
+  /api/auth/register:
+    post:
+      tags:
+        - Authentication
+      description: Creates a new user account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "200":
+          description: User account registration
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+        "400":
+          $ref: "#/components/responses/GenericError"
+  /api/auth/login:
+    post:
+      tags:
+        - Authentication
+      description: Get the user authentication token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        "200":
+          description: User login response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+        "400":
+          $ref: "#/components/responses/GenericError"
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+          format: password
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+  responses:
+    GenericError:
+      description: Error object
+      content:
+        application/json:
+          schema:
+            "$ref": "#/components/schemas/Error"
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
