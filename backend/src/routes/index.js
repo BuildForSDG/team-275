@@ -1,9 +1,9 @@
-import express from "express";
+import express from 'express';
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.json("Hello world!");
+router.get('/', (req, res) => {
+  res.json('Hello world!');
 });
 
 export const indexRouter = router;
