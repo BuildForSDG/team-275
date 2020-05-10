@@ -6,4 +6,5 @@ router.get('/', (req, res) => {
   res.json('Hello world!');
 });
 
-export const indexRouter = router;
+const indexRouter = router;
+export default indexRouter;

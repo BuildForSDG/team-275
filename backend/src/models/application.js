@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 const applicationSchema = new Schema({
   applicationNum: {
     type: Number,
