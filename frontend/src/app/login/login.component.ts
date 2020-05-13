@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   }
 
   constructor(private fb: FormBuilder) {}
+  
   loginForm = this.fb.group({
     registeras: [""],
     email: ["", [Validators.required, Validators.email]],
