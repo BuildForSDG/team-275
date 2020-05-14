@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Login</h1>
   <hr />
-  <form [formGroup]="loginForm">
+  <form [formGroup]="loginForm" (ngSubmit)="send(loginForm.value)">
     <br />
     <div class="form-group">
       <label for="email">Email</label>
@@ -36,10 +36,8 @@
         >
       </div>
     </div>
+    <hr />
+    <p></p>
+    <button type="submit" class="loginbtn">Login</button>
   </form>
-
-  <hr />
-  <p></p>
-
-  <button type="submit" class="loginbtn">Login</button>
 </div>
