@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { PasswordValidator } from '../password.validator';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-register',
@@ -9,38 +10,37 @@ import { PasswordValidator } from '../password.validator';
 })
 export class RegisterComponent implements OnInit {
   options = ['Education Provider', 'Institution'];
+  registrationForm: FormGroup;
+  registeras: FormControl;
+  email: FormControl;
+  password: FormControl;
+  confirmPassword: FormControl;
 
   // getters to prevent cluttering template with repetitive code
-  get email() {
-    return this.registrationForm.get('email');
-  }
 
-  get password() {
-    return this.registrationForm.get('password');
-  }
-  get registeras() {
-    return this.registrationForm.get('registeras');
-  }
+  constructor(private fb: FormBuilder, private auth: AuthService) { }
 
-  constructor(private fb: FormBuilder) {}
-  registrationForm = this.fb.group(
-    {
-      registeras: [''],
-      email: ['', [Validators.required, Validators.email]],
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.pattern(
-            '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$'
-          ),
-        ],
-      ],
-      confirmPassword: [''],
-    },
-    { validator: PasswordValidator }
-  );
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.registrationForm = this.fb.group(
+      {
+        registeras: this.registeras = new FormControl(''),
+        email: this.email = new FormControl('', [Validators.required, Validators.email]),
+        password: this.password = new FormControl(
+          '',
+          [
+            Validators.required,
+            Validators.minLength(8),
+            Validators.pattern(
+              '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$'
+            ),
+          ],
+        ),
+        confirmPassword: this.confirmPassword = new FormControl(''),
+      },
+      { validator: PasswordValidator }
+    );
+   }
+  saveUser(formValues: any) {
+    console.log(formValues);
+  }
 }
