@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { ILogin } from 'src/app/shared/models/login.model';
 
 @Component({
   selector: 'app-login',
@@ -7,11 +9,11 @@ import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms'
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-loginForm: FormGroup;
-email: FormControl;
-password: FormControl;
+  loginForm: FormGroup;
+  email: FormControl;
+  password: FormControl;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private auth: AuthService) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -19,7 +21,7 @@ password: FormControl;
       password: this.password = new FormControl('', Validators.required)
     });
   }
-  send(formValues: any) {
-    console.log(formValues);
+  send(formValues: ILogin) {
+    this.auth.logIn(formValues);
   }
 }
