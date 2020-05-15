@@ -1,32 +1,32 @@
 
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><i-feather name="heart" style="color: rgb(240, 21, 6);"></i-feather></a>
+      <a class="navbar-brand" href="#"><i-feather name="heart" style="color: rgb(17, 130, 223);"></i-feather></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
+        <form class="d-flex">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        </form>
         <ul class="navbar-nav mr-auto mb-2 mb-md-0">
-          <li class="nav-item active">
-            <a class="nav-link" aria-current="page" href="#">Home</a>
+          <li class="nav-item">
+            <a class="nav-link text-dark" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link text-dark" href="#">Link</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            <a class="nav-link text-dark" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
           </li>
         </ul>
         <form class="d-flex">
-        
           <button class="btn btn-outline-primary" [routerLink]="'/login'">Login</button>
-          <button class="btn btn-dark" [routerLink]="'/register'">SignUp</button>
+          <button class="btn" [routerLink]="'/register'">SignUp</button>
         </form>
       </div>
     </div>
   </nav>
-  <main class="container">
-    <div class="bg-light p-5 rounded">
+  <div class="main container">
       <router-outlet></router-outlet>
-    </div>
-  </main>
+  </div>
