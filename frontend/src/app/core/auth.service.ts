@@ -3,7 +3,6 @@ import { HttpClient} from '@angular/common/http';
 import { ILogin } from '../shared/models/login.model';
 import { Observable } from 'rxjs';
 
-
 @Injectable({ providedIn: 'root' })
 export class AuthService {
     constructor(private http: HttpClient) { }
