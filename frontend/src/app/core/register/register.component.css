@@ -4,6 +4,8 @@
 
 /* Add padding to containers */
 .container {
+  margin: 20rem;
+  margin-left: 25;
   padding: 16px;
 }
 

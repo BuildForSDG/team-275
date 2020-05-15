@@ -1,9 +1,11 @@
+
 * {
   box-sizing: border-box;
 }
 
 /* Add padding to containers */
 .container {
+  margin-top: 10rem;
   padding: 16px;
 }
 
