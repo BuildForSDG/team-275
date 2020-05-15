@@ -42,5 +42,6 @@ export class RegisterComponent implements OnInit {
    }
   saveUser(formValues: any) {
     console.log(formValues);
+    this.auth.register(formValues).subscribe(result => console.log(result), err => console.log(err));
   }
 }
