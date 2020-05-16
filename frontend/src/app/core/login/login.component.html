@@ -15,7 +15,7 @@
         <form [formGroup]="loginForm" (ngSubmit)="send(loginForm.value)" role="form"
           class="php-email-form">
           <div *ngIf="success" class="alert alert-success" role="alert">
-            Registration Successful
+            Login Successful
           </div>
           <div *ngIf="error" class="alert alert-danger" role="alert">
             <strong>Failed to sign in!</strong> Please check your credentials and try again. Otherwise check
