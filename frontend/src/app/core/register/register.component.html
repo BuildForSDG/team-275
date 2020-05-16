@@ -18,8 +18,7 @@
             Registration Successful
           </div>
           <div *ngIf="error" class="alert alert-danger" role="alert">
-            <strong>Failed to sign up!</strong> Please check your credentials and try again. Otherwise check
-                        your email for account activation link
+            <strong>Failed to sign up!</strong> {{error}}
           </div>
           <!-- Register as: -->
           <div class="form-group">
