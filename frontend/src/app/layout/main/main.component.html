@@ -1,12 +1,14 @@
-<!-- <div class="n-header">
-    <router-outlet name="navbar"></router-outlet>
-</div> -->
-<!-- <div [ngClass]="{'main-condition': !isEnabled, 'main': isEnabled}">
-    <router-outlet></router-outlet>
-    <router-outlet name="popup"></router-outlet> -->
-<!-- </div> -->
-<!-- <div *ngIf="!doNotShowFooter"> -->
-    <app-navbar></app-navbar>
-    <app-footer></app-footer>
-<!-- </div> -->
-it works
+   <div class="full-page fixed-top">
+       <div class="header">
+        <app-navbar></app-navbar>
+       </div>
+       <div class="content">
+        <router-outlet></router-outlet>
+       </div>
+    <div class="footer">
+        <app-footer></app-footer>
+    </div>
+   </div>
+   
+
+
