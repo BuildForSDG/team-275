@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   send(formValues: ILogin) {
     this.auth.logIn(formValues).subscribe(result => {
       if (result) { this.success = true; this.onSuccess(); }
-    }, err => {this.error = err; console.log(err); this.onError(); });
+    }, err => {this.error = err.error.error; this.onError(); });
   }
   onSuccess() {
     setTimeout(() => {
