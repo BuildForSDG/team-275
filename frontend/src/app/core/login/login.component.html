@@ -1,33 +1,57 @@
+<section id="login" class="login">
+  <div class="container">
 
-<form [formGroup]="loginForm"
-  (ngSubmit)="send(loginForm.value)" role="form" class="php-email-form">
-
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input formControlName="email" type="email" class="form-control" name="email"
-      [class.is-invalid]="email.invalid && email.touched" />
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    <div *ngIf="email.invalid && email.touched">
-      <small *ngIf="email.errors?.required" class="text-danger">Email is required</small>
-      <small *ngIf="email.errors?.email" class="text-danger">Please enter a valid email</small>
+    <div class="section-title m-5" data-aos="fade-up">
+      <p>Sign into Team275</p>
     </div>
 
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input formControlName="password" type="password" class="form-control" name="password"
-        [class.is-invalid]="password.invalid && password.touched" />
-      <div *ngIf="password.invalid && password.touched">
-        <small *ngIf="password.errors?.required" class="text-danger">Password is required</small>
-        <small *ngIf="password.errors?.pattern" class="text-danger">Password must have one uppercase and lowercase
-          letter, as well as a
-          digit and special character</small>
-        <small *ngIf="password.errors?.minlength" class="text-danger">Password must be at least 8 characters</small>
+    <div class="row">
+
+      <div class="col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+
       </div>
-    </div>
-    <button type="submit" class="btnlogin float-right">Login</button>
-  </div>
 
-  <div class="container signin">
-    <p>Don't have an account? <a href="javascript:void(0)" (click)="show()">Register</a>.</p>
+      <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+        <form [formGroup]="loginForm" (ngSubmit)="send(loginForm.value)" role="form"
+          class="php-email-form">
+          <div *ngIf="success" class="alert alert-success" role="alert">
+            Registration Successful
+          </div>
+          <div *ngIf="error" class="alert alert-danger" role="alert">
+            <strong>Failed to sign in!</strong> Please check your credentials and try again. Otherwise check
+                        your email for account activation link
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input formControlName="email" type="email" class="form-control" name="email"
+              [class.is-invalid]="email.invalid && email.touched" />
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <div *ngIf="email.invalid && email.touched">
+              <small *ngIf="email.errors?.required" class="text-danger">Email is required</small>
+              <small *ngIf="email.errors?.email" class="text-danger">Please enter a valid email</small>
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input formControlName="password" type="password" class="form-control" name="password"
+                [class.is-invalid]="password.invalid && password.touched" />
+              <div *ngIf="password.invalid && password.touched">
+                <small *ngIf="password.errors?.required" class="text-danger">Password is required</small>
+                <small *ngIf="password.errors?.pattern" class="text-danger">Password must have one uppercase and
+                  lowercase letter, as well as a
+                  digit and special character</small>
+                <small *ngIf="password.errors?.minlength" class="text-danger">Password must be at least 8
+                  characters</small>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="registerbtn float-right">Sign in</button>
+          <div class="container signin">
+            <p>Already have an account? <a href="javascript:void(0)">Sign in</a>.</p>
+          </div>
+        </form>
+        </div>
+        </div>
   </div>
-</form>
+</section><!-- End Contact Us Section -->
