@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { PasswordValidator } from '../password.validator';
 import { AuthService } from '../auth.service';
@@ -15,6 +15,8 @@ export class RegisterComponent implements OnInit {
   email: FormControl;
   password: FormControl;
   confirmPassword: FormControl;
+  success: boolean;
+  error: any;
 
   // getters to prevent cluttering template with repetitive code
 
@@ -42,6 +44,18 @@ export class RegisterComponent implements OnInit {
    }
   saveUser(formValues: any) {
     console.log(formValues);
-    this.auth.register(formValues).subscribe(result => console.log(result), err => console.log(err));
+    this.auth.register(formValues).subscribe(result => {
+      if (result) { this.success = true; this.onSuccess(); }
+    }, err => {this.error = err; console.log(err); this.onError(); });
+  }
+  onSuccess() {
+  setTimeout(() => {
+    this.success = false;
+  }, 5000);
+  }
+  onError() {
+    setTimeout(() => {
+      this.error = undefined;
+    }, 5000);
   }
 }

@@ -2,31 +2,42 @@
   <div class="container">
 
     <div class="section-title m-5" data-aos="fade-up">
-      <h2>REGISTRATION FORM</h2>
+      <h2 *ngIf="false">REGISTRATION FORM</h2>
       <p>Register to get started</p>
     </div>
 
     <div class="row">
 
       <div class="col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-        
+
       </div>
 
       <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-        <form action="forms/contact.php" [formGroup]="registrationForm" (ngSubmit)="saveUser(registrationForm.value)" role="form" class="php-email-form">
+        <form [formGroup]="registrationForm" (ngSubmit)="saveUser(registrationForm.value)" role="form"
+          class="php-email-form">
+          <div *ngIf="success" class="alert alert-success" role="alert">
+            Registration Successful
+          </div>
+          <div *ngIf="error" class="alert alert-danger" role="alert">
+            <strong>Failed to sign in!</strong> Please check your credentials and try again. Otherwise check
+                        your email for account activation link
+          </div>
           <!-- Register as: -->
-          <select formControlName="registeras" class="form-control custom-select" required
-            [class.is-invalid]="registeras.invalid && registeras.touched">
-            <option selected>Register As</option>
-            <option *ngFor="let option of options">{{ option }}</option>
-          </select>
-          <small class="text-danger" [class.d-none]="registeras.valid || registeras.untouched">Please select an
-            option</small>
+          <div class="form-group">
+            <select formControlName="registeras" class="form-control custom-select" required
+              [class.is-invalid]="registeras.invalid && registeras.touched">
+              <option selected>Register As</option>
+              <option *ngFor="let option of options">{{ option }}</option>
+            </select>
+            <small class="text-danger" [class.d-none]="registeras.valid || registeras.untouched">Please select an
+              option</small>
+          </div>
+
           <div class="form-group">
             <label for="email">Email</label>
             <input formControlName="email" type="email" class="form-control" name="email"
               [class.is-invalid]="email.invalid && email.touched" />
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             <div *ngIf="email.invalid && email.touched">
               <small *ngIf="email.errors?.required" class="text-danger">Email is required</small>
               <small *ngIf="email.errors?.email" class="text-danger">Please enter a valid email</small>
@@ -34,52 +45,37 @@
 
             <div class="form-group">
               <label for="password">Password</label>
-              <input
-                formControlName="password"
-                type="password"
-                class="form-control"
-                name="password"
-                [class.is-invalid]="password.invalid && password.touched"
-              />
+              <input formControlName="password" type="password" class="form-control" name="password"
+                [class.is-invalid]="password.invalid && password.touched" />
               <div *ngIf="password.invalid && password.touched">
-                <small *ngIf="password.errors?.required" class="text-danger"
-                  >Password is required</small
-                >
-                <small *ngIf="password.errors?.pattern" class="text-danger"
-                  >Password must have one uppercase and lowercase letter, as well as a
-                  digit and special character</small
-                >
-                <small *ngIf="password.errors?.minlength" class="text-danger"
-                  >Password must be at least 8 characters</small
-                >
+                <small *ngIf="password.errors?.required" class="text-danger">Password is required</small>
+                <small *ngIf="password.errors?.pattern" class="text-danger">Password must have one uppercase and
+                  lowercase letter, as well as a
+                  digit and special character</small>
+                <small *ngIf="password.errors?.minlength" class="text-danger">Password must be at least 8
+                  characters</small>
               </div>
             </div>
             <div class="form-group">
               <label for="confirmPassword">Confirm Password</label>
-              <input
-                formControlName="confirmPassword"
-                type="password"
-                class="form-control"
-                name="confirmPassword"
-                [class.is-invalid]="registrationForm.errors?.misMatch"
-              />
-              <small *ngIf="registrationForm.errors?.misMatch" class="text-danger"
-                >Passwords do not match</small
-              >
+              <input formControlName="confirmPassword" type="password" class="form-control" name="confirmPassword"
+                [class.is-invalid]="registrationForm.errors?.misMatch" />
+              <small *ngIf="registrationForm.errors?.misMatch" class="text-danger">Passwords do not match</small>
             </div>
             <hr />
             <p>
               By creating an account you agree to our <a href="#">Terms & Privacy</a>.
             </p>
-          
-            <button type="submit" class="registerbtn">Register</button>
+
+            <button type="submit" class="registerbtn float-right">Register</button>
           </div>
-          
+
           <div class="container signin">
-            <p>Already have an account? <a [routerLink]="'/login'">Sign in</a>.</p>
+            <p>Already have an account? <a href="javascript:void(0)">Sign in</a>.</p>
           </div>
         </form>
       </div>
+      <!-- <app-login *ngIf="false" class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200" ></app-login> -->
 
     </div>
 
