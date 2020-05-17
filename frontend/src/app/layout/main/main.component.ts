@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRouteSnapshot, NavigationEnd, NavigationError, Router } from '@angular/router';
-import { LocalStorageService } from 'ngx-webstorage';
 import { Title } from '@angular/platform-browser';
 import { MainService } from './main.service';
 import { filter } from 'rxjs/operators';
