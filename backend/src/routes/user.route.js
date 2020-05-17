@@ -6,7 +6,7 @@ const auth = new AuthController();
 router.post('/register', async (req, res) => {
   try {
     const user = {
-      name: req.body.name,
+      registeras: req.body.registeras,
       email: req.body.email,
       password: req.body.password
     };

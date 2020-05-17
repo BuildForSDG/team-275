@@ -1,0 +1,39 @@
+@import '~bootstrap';
+
+/* $grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px
+); */
+
+@include media-breakpoint-between(xs, md) {
+    .n-header {
+        margin-bottom: 120px !important;
+    }
+}
+
+.n-header {
+    margin-bottom: 100px;
+}
+
+ /* on medium screen to large. we give the body a bit of space from the navbar */
+@include media-breakpoint-between(md, xl) {
+    .main {
+        margin-top: -66px !important;
+        overflow: hidden;
+    }
+}
+
+/* load this when the top bar is NOT shown */
+.main {
+    margin-top: -70px;
+    overflow: hidden;
+}
+
+ /* load this when the top bar is shown */
+.main-condition {
+    margin-top: 0;
+    overflow-x: hidden;
+}
