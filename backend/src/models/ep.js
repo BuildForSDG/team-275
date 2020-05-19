@@ -31,3 +31,5 @@ const workExperience = new educationSchema({
 const EducationProvider = mongoose.model("Education_Provider", eduProviderSchema);
 const Education = mongoose.model("Education", educationSchema);
 const WorkExperience = mongoose.model("WorkExperience", workExperience);
+
+export default {EducationProvider, Education, WorkExperience};
