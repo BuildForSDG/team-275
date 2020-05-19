@@ -21,7 +21,7 @@ const educationSchema = new Schema({
   started: {type: Date, required: true},
   complete: {type: Date, required: true}
 });
-const workExperience = new educationSchema({
+const workExperience = new Schema({
   epId: {type: Schema.Types.ObjectId, ref: "Education_Provider", required: true},
   company: {type: String, required: true},
   position: {type: String, required: true},
