@@ -15,9 +15,10 @@ const campusSchema = new Schema({
   institutionId: { type: Schema.Types.ObjectId, ref: 'Institution', required: true },
   name: { type: String, required: true },
   physicalAddress: { type: String, required: true },
+  postalAddress: { type: String, required: true },
   contactNumber: { type: String, required: true },
   shortBio: { type: String, required: true }
 });
 const Institution = mongoose.model('Institution', institutionSchema);
 const Campus = mongoose.model('Campus', campusSchema);
-export default { Institution, Campus };
+export { Institution, Campus };
