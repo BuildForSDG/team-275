@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - 'backend/**'
-    branches: [ master, develop/*, feature/* ]
+    branches: [ master, develop, develop/*, feature/* ]
   pull_request:
     branches: [ master, develop ]
 
