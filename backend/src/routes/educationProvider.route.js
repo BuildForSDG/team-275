@@ -1,11 +1,11 @@
 import express from 'express';
-import { checkAuth } from '../middleware/check-auth';
-import EducationProviderController from './../controllers/education-provider.controller';
+import checkAuth from '../middleware/check-auth';
+import EducationProviderController from '../controllers/education-provider.controller';
 
 const router = express.Router();
 const ep = new EducationProviderController();
 
-router.post('/add', checkAuth, async (req, res, next) => {
+router.post('/add', checkAuth, async (req, res) => {
   const user = { user: req.userData };
   const eduProvider = {
     fullName: req.body.fullName,
@@ -21,13 +21,11 @@ router.post('/add', checkAuth, async (req, res, next) => {
   };
   try {
     const doc = await ep.addEducationProvider(eduProvider, user.user.userId);
-   
+
     res.json(doc);
   } catch (err) {
     res.status(400).send({ message: err.message });
   }
-
-
 });
 
 const educationProviderRoute = router;

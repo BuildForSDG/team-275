@@ -18,7 +18,7 @@ app.use(json());
 /** --- middleware ---- */
 app.use('/api', indexRouter);
 app.use('/api/auth', userRouter);
-app.use('/api/education-provider', educationProviderRouter)
+app.use('/api/education-provider', educationProviderRouter);
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 /** database connection */

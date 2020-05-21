@@ -1,3 +1,1 @@
-export default class InstitutionController {
-
-}
+export default class InstitutionController {}
