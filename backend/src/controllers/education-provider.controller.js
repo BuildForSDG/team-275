@@ -1,27 +1,24 @@
-import { Mongoose } from 'mongoose';
-
+import {EducationProvider} from './../models/ep';
  /**
    * Add new education provider.
    *
    * @public
    *
    * @method
-   *
-   * @param  {Object}   req  - express http request object
-   * @param  {Object}   res  - express http response object
-   * @param  {Function} next - calls th enect middleware in the stack
+   * @param - education provider
+   * @param - userId
    *
    * @return {Object}        - express http response object
    */
-export default class EducationProvider {
+export default class EducationProviderController {
     
-    async addEducationProvider(educationProviderModel, userId) {
-         let eduProvider = await EducationProvider.findOne(userId);
+    async addEducationProvider(eduProviderModel, userIdModel) {
+         let eduProvider = await EducationProvider.findOne({ userId: userIdModel });
          if (eduProvider) {
              throw new Error('Education Provider already exists!');
          }
-        eduProvider.userId = userId;
-        eduProvider = new EducationProvider(educationProviderModel);
+        eduProvider = new EducationProvider(eduProviderModel);
+        eduProvider.userId = userIdModel;
         return await eduProvider.save();
     }
 }

@@ -1,9 +1,9 @@
 import express from 'express';
 import { checkAuth } from '../middleware/check-auth';
-import EducationProvider from './../controllers/education-provider.controller';
+import EducationProviderController from './../controllers/education-provider.controller';
 
 const router = express.Router();
-const ep = new EducationProvider();
+const ep = new EducationProviderController();
 
 router.post('/add', checkAuth, async (req, res, next) => {
   const user = { user: req.userData };
@@ -20,8 +20,8 @@ router.post('/add', checkAuth, async (req, res, next) => {
     bio: req.body.bio
   };
   try {
-    const data = {userid: user, data: eduProvider}
-    const doc = await ep.addEducationProvider(eduProvider, user.user.userid);
+    const doc = await ep.addEducationProvider(eduProvider, user.user.userId);
+   
     res.json(doc);
   } catch (err) {
     res.status(400).send({ message: err.message });
