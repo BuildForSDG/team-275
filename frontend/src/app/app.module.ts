@@ -9,11 +9,12 @@ import { IconsModule } from './shared/icons/icons.module';
 import { MainComponent } from './layout/main/main.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
+import { EducationProviderModule } from './education-provider/education-provider.module';
 
 
 @NgModule({
   declarations: [MainComponent, RegisterComponent, LoginComponent, FooterComponent, NavbarComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, IconsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, IconsModule, EducationProviderModule],
   providers: [AuthService],
   bootstrap: [MainComponent],
 })
