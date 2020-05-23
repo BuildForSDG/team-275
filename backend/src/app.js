@@ -20,7 +20,7 @@ app.use(json());
 app.use('/api', indexRouter);
 app.use('/api/auth', userRouter);
 app.use('/api/education-provider', educationProviderRouter);
-app.use('/api/instituion', institutionRoute);
+app.use('/api/institution', institutionRoute);
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 /** database connection */
