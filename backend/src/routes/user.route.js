@@ -23,6 +23,7 @@ router.post('/login', async (req, res) => {
       password: req.body.password
     };
     const token = await auth.postLogin(user);
+    // req.session['currentUser'] = user;
     res.send(token);
   } catch (e) {
     res.status(400).send({ error: e.message });
