@@ -89,7 +89,7 @@ h1, h2, h3, h4, h5, h6, .font-primary {
   letter-spacing: 2px;
 }
 
-#header .logo h1 a, #header .logo h1 a:hover {
+#header .logo h1 a, #header .logo h1 a:hover { 
   color: #7a6960;
   text-decoration: none;
 }
