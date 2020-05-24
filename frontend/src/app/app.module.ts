@@ -4,18 +4,19 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent, LoginComponent, AuthService } from './core/index';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { IconsModule } from './shared/icons/icons.module';
 import { MainComponent } from './layout/main/main.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { EducationProviderModule } from './education-provider/education-provider.module';
+import { AuthInterceptor } from './shared/interceptors/auth-interceptor';
 
 
 @NgModule({
   declarations: [MainComponent, RegisterComponent, LoginComponent, FooterComponent, NavbarComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, IconsModule, EducationProviderModule],
-  providers: [AuthService],
+  providers: [AuthService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [MainComponent],
 })
 export class AppModule { }
