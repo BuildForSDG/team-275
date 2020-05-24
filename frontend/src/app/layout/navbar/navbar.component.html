@@ -1,8 +1,8 @@
-<header id="header" class="fixed-top">
-    <div class="container-fluid d-flex">
+<header *ngIf="false" id="header" class="fixed-top">
+    <div  class="container-fluid d-flex">
 
       <div class="logo mr-auto">
-        <h1 class="text-light"><a href="index.html"><span>Team275</span></a></h1>
+        <h1 class="text-light"><a href="index.html"><span>2tor</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -23,3 +23,15 @@
 
     </div>
   </header><!-- End Header -->
+  <nav *ngIf="true" class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">2tor</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+    <ul class="navbar-nav px-3">
+      <li class="nav-item text-nowrap">
+        <a class="nav-link" href="#">Sign out</a>
+      </li>
+    </ul>
+  </nav>
